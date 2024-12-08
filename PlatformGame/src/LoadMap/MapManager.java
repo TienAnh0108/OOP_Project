@@ -38,7 +38,7 @@ public class MapManager {
 		get_Tile_Block();
 		iniMapAndOffset();
 
-		InputStream is = getClass().getResourceAsStream("/bg3.png");
+		InputStream is = getClass().getResourceAsStream("/Dusk.png");
 		
 	   
 	    	try {
