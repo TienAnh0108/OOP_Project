@@ -10,6 +10,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 
 import Character.Player;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,6 +19,8 @@ import javax.swing.JSlider;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -34,6 +37,7 @@ public class PauseMenu extends JPanel {
 	private JSlider sliderMusic;
 	private JSlider sliderSound;
 	private JButton nextSong;
+	private Image pauseImage;
 	
 	public PauseMenu() {
 		
@@ -47,6 +51,8 @@ public class PauseMenu extends JPanel {
 		setPreferredSize(new Dimension(500, 500));
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
+		pauseImage = new ImageIcon(getClass().getResource("/background222.png")).getImage();
+		
 		
 		continueButton = new JButton("Continue");
 		continueButton.setBounds(40, 375, 120, 56);
@@ -136,7 +142,7 @@ public class PauseMenu extends JPanel {
 		add(nextSong);
 		
 	}
-
+	
 	private void promptPage() {
         int result = JOptionPane.showConfirmDialog(
             null,
