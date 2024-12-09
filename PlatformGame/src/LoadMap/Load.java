@@ -12,6 +12,7 @@ import Character.Crab;
 import Objects.Cannon;
 import Objects.Door;
 import Objects.HealthPotion;
+import Objects.NPC;
 import Objects.Traps;
 import main.MainGame;
 
@@ -70,6 +71,24 @@ public class Load {
 				
 				if (value == 0) 
                    list.add(new Crab(i*MainGame.TILES_SIZE, j*MainGame.TILES_SIZE));
+				
+			}		
+		}
+
+		return list;
+	}
+	
+	public static ArrayList<NPC> GetNPC(){
+		ArrayList<NPC> list = new ArrayList<>();	
+		BufferedImage img = LoadImage(mapControler.get(index));
+		
+		for (int j = 0; j < img.getHeight(); j++) {
+			for (int i = 0; i < img.getWidth(); i++) {
+				Color color = new Color(img.getRGB(i, j));
+				int value = color.getBlue();
+				
+				if (value == 8) 
+                   list.add(new NPC(i*MainGame.TILES_SIZE, j*MainGame.TILES_SIZE));
 				
 			}		
 		}
