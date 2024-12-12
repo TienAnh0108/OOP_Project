@@ -129,7 +129,8 @@ public class Player extends Entity {
 				airSpeed += gravity;
 				acJumpSound = false;
 			
-			}else {
+			}
+			else {
 				airSpeed += gravity + 0.12;
 				if (airSpeed > 0) inAir = false; airSpeed = 0; acJumpSound = true;
 			}

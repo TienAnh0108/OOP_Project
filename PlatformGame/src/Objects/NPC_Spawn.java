@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import Character.Crab_Spawn;
 import LoadMap.Load;
 import main.MainGame;
 
@@ -15,6 +16,7 @@ public class NPC_Spawn {
 	private BufferedImage[][] Animation;
 	private BufferedImage img;
 	private BufferedImage imgMsg;
+	private BufferedImage imgMsgEnd;
 	private int i = 0;
 	private int frame;
 	public  int Offset;
@@ -46,9 +48,20 @@ public class NPC_Spawn {
 				g.drawImage(Animation[0][frame], (int)npc.x - Offset,(int)npc.y - 12 , 96, 84, null);
 			}
 			else {
-				
-				g.drawImage(Animation[0][frame], (int)npc.x - Offset,(int)npc.y - 12 , 96, 84, null);
-				g.drawImage(imgMsg, (int) npc.x- Offset - 10,(int) npc.y - 140,250 , 160, null);
+				if(!Door.getKey) {
+					g.drawImage(Animation[0][frame], (int)npc.x - Offset,(int)npc.y - 12 , 96, 84, null);
+					g.drawImage(imgMsg, (int) npc.x- Offset,(int) npc.y - 70 ,140 , 80, null);
+				}
+				else {
+					if(Crab_Spawn.clearCrab) {
+						g.drawImage(Animation[0][frame], (int)npc.x - Offset,(int)npc.y - 12 , 96, 84, null);
+						g.drawImage(imgMsgEnd, (int) npc.x- Offset - 10,(int) npc.y - 70,250 , 160, null);
+					}
+					else {
+						g.drawImage(Animation[0][frame], (int)npc.x - Offset,(int)npc.y - 12 , 96, 84, null);
+						g.drawImage(imgMsg, (int) npc.x- Offset - 10,(int) npc.y - 70,140 , 80, null);
+					}
+				}
 			}
 		}
 	}
@@ -56,10 +69,12 @@ public class NPC_Spawn {
 	private void loadNPC() {
 		InputStream is = getClass().getResourceAsStream("/npc.png");
 		InputStream msg = getClass().getResourceAsStream("/announcement.png");
+		InputStream msgEnd = getClass().getResourceAsStream("/msg_end-removebg-preview.png");
 
 		try {
 			img = ImageIO.read(is);
 			imgMsg = ImageIO.read(msg);
+			imgMsgEnd = ImageIO.read(msgEnd);
 			Animation = new BufferedImage[1][4];
 			
 			for(int i = 0; i < 1; i++) {
