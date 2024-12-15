@@ -150,7 +150,7 @@ public class Enemy extends Entity {
 				x += 20;
 			
 			numOfHit++;
-			if(numOfHit > 2) {
+			if(numOfHit > 6) {
 			   active = false;
 			   Crab_Spawn.numCrabs--;
 			   numOfHit = 0;

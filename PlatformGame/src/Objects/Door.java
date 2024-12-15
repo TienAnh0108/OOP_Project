@@ -29,7 +29,7 @@ public class Door {
     		if(getKey && !Crab_Spawn.clearCrab)
     		    System.out.println("Kill all enemies");
     		else
-    			MainGame.nextMap = true;
+    			MainGame.winning = true;
 
     }
     

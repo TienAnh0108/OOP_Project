@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
+import javax.swing.JOptionPane;
 
 import Character.Crab_Spawn;
 import Character.Player;
@@ -16,7 +16,6 @@ import LoadMap.Load;
 import LoadMap.MapManager;
 import Objects.Cannon_Spawn;
 import Objects.Door;
-import Objects.HealthPotion;
 import Objects.HealthPotion_Spawn;
 import Objects.NPC_Spawn;
 import Objects.Trap_Spawn;
@@ -48,7 +47,7 @@ public class MainGame implements Runnable{
 	public static boolean nextSong = false;
 	private int songIndex = 2;
 	
-	public static boolean nextMap = false;
+	public static boolean winning = false;
 	
 	private Sound sound;
 	private Thread thread;
@@ -185,15 +184,15 @@ public class MainGame implements Runnable{
 				lastTime = now;
 			}
 
-			if(nextMap && Door.getKey) { 
-				if(Load.index == 0)
-				   Load.index = 1;
-				else
-				   Load.index = 0;
-				Door.reset();
-				initializePlayer();
+			if(winning && Door.getKey) { 
+				if(winningPrompt()) {
+					Door.reset();
+					initializePlayer();
+				}else
+					System.exit(0);
+					
 			}	
-			nextMap = false;	
+			winning = false;	
 			
 				
 		
@@ -242,6 +241,22 @@ public class MainGame implements Runnable{
             
 		}
 		
+	}
+	
+	private boolean winningPrompt() {
+		 int result = JOptionPane.showConfirmDialog(
+	                null, 
+	                "You Win, Wanna play again?", // Message
+	                "Confirmation",            // Title
+	                JOptionPane.YES_NO_OPTION, // Option type
+	                JOptionPane.QUESTION_MESSAGE // Message type
+	        );
+
+	        
+	        if (result == JOptionPane.YES_OPTION) 
+	            return true;
+	        else
+	        	return false;
 	}
 	
 	private void getSound(int i)  {
