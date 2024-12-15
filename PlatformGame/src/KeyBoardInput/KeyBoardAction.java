@@ -38,8 +38,7 @@ public class KeyBoardAction implements KeyListener{
 	                break;
 	            case KeyEvent.VK_RIGHT:
 	            	
-	            	
-	                jpanel.getGame().getPlayer().state_ani = 2;
+	            	jpanel.getGame().getPlayer().state_ani = 2;
 	                jpanel.getGame().getPlayer().setRight(true);
 	                SwitchAction.action = 2;
 	            	

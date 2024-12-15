@@ -18,6 +18,7 @@ import Objects.Cannon_Spawn;
 import Objects.Door;
 import Objects.HealthPotion;
 import Objects.HealthPotion_Spawn;
+import Objects.NPC_Spawn;
 import Objects.Trap_Spawn;
 
 public class MainGame implements Runnable{
@@ -31,7 +32,7 @@ public class MainGame implements Runnable{
 	Cannon_Spawn cannon;
 	MapManager map;
 	HealthPotion_Spawn potion; 
-	
+	NPC_Spawn npc;
 	
 	
 	public final static int TILES_DEFAULT_SIZE = 32;
@@ -84,6 +85,7 @@ public class MainGame implements Runnable{
 		map = new MapManager();
 		if(check == 1) {
 		potion = new HealthPotion_Spawn();
+		npc = new NPC_Spawn();
 		trap = new Trap_Spawn();
 		cannon = new Cannon_Spawn();
 		player = new Player(30,300, (int) (96*SCALE), (int) (84*SCALE) );
@@ -109,6 +111,9 @@ public class MainGame implements Runnable{
 		   potion.Offset = map.xLvlOffset;
 		   potion.renderPotion(g);
 		   
+		   npc.Offset = map.xLvlOffset;
+		   npc.renderNPC(g);
+		   
 		   
 		   cannon.Offset =  map.xLvlOffset;
 		   cannon.renderGeneral(g,player);
@@ -127,6 +132,7 @@ public class MainGame implements Runnable{
 	  if(check == 1) {
 	   takeAction = SwitchAction.action;
 	   player.frame1 = (SwitchAction.GetFramesAction(takeAction));
+	   npc.updateNPCState();
 	   crab.updateCrabState();
 	   player.updatePlayer();
 	   cannon.updateAttackTick();
@@ -196,6 +202,7 @@ public class MainGame implements Runnable{
 				if(!sound.checkActive()) getSound(songIndex);
 				lastCheck = System.currentTimeMillis();
 				
+				npc = new NPC_Spawn();
 				potion = new HealthPotion_Spawn();
 				trap = new Trap_Spawn();
 				cannon = new Cannon_Spawn();
