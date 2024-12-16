@@ -8,6 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="src" path="sound"/>
-	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/flatlaf-3.5.1.jar"/>
+	<classpathentry kind="lib" path="D:/Java lib/flatlaf-3.5.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

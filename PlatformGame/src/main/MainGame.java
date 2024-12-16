@@ -16,7 +16,6 @@ import LoadMap.Load;
 import LoadMap.MapManager;
 import Objects.Cannon_Spawn;
 import Objects.Door;
-import Objects.HealthPotion;
 import Objects.HealthPotion_Spawn;
 import Objects.NPC_Spawn;
 import Objects.Trap_Spawn;

@@ -10,7 +10,6 @@ import javax.imageio.ImageIO;
 
 import Character.Crab_Spawn;
 import LoadMap.Load;
-import main.MainGame;
 
 public class NPC_Spawn {
 	private BufferedImage[][] Animation;
