@@ -7,10 +7,8 @@ import main.MainGame;
 
 public class Door {
 
-	
     public static int x;
     public static int y;
-    
     public static int KeyX;
     public static int KeyY;
     
@@ -29,7 +27,7 @@ public class Door {
     		if(getKey && !Crab_Spawn.clearCrab)
     		    System.out.println("Kill all enemies");
     		else
-    			MainGame.nextMap = true;
+    			MainGame.winning = true;
 
     }
     

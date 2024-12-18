@@ -18,7 +18,7 @@ public class HealthPotion_Spawn {
 	
 	public HealthPotion_Spawn() {
 		list = new ArrayList<>();
-		list = Load.GetHeathPotion();
+		list = Load.getHeathPotion;
 		loadHealthPotion();
 	}
 

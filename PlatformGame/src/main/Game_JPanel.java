@@ -26,9 +26,7 @@ public class Game_JPanel extends JPanel{
     
 	public Game_JPanel(MainGame game) {
 		this.game = game;	
-		
 
-		
 		pauseMenu = new PauseMenu();
 		pauseMenu.setVisible(false);
 		
@@ -37,9 +35,7 @@ public class Game_JPanel extends JPanel{
 		
 		play = new PlayingMenu();
 		play.setVisible(true);
-		
 
-		
         add(pauseMenu);
         add(dieMenu);
         add(play);
@@ -48,7 +44,6 @@ public class Game_JPanel extends JPanel{
 		
      }
 	
-
 	private void setPanelSize() {
 		Dimension size = new Dimension(MainGame.GAME_WIDTH, MainGame.GAME_HEIGHT);
 		setMinimumSize(size);
@@ -57,6 +52,16 @@ public class Game_JPanel extends JPanel{
 
 	}
 	
+	public void paintComponent(Graphics g) {	
+		super.paintComponent(g);
+        game.render(g);
+		
+	}
+
+	
+    public MainGame getGame() {
+	 return game;
+   }
 	private void doorNotification() {
 		notification = new JLabel("You need a key !!");
 		notification.setFont(new Font("Tahoma", Font.PLAIN, 150));
@@ -72,16 +77,7 @@ public class Game_JPanel extends JPanel{
 		  notification.setVisible(true);
 	}
 
-	public void paintComponent(Graphics g) {	
-		super.paintComponent(g);
-        game.render(g);
-		
-	}
 
-	
-    public MainGame getGame() {
-	 return game;
-   }
     
     public void pauseMenu() {
     	if(!pauseMenu.isVisible() && selectionMenu == 0)

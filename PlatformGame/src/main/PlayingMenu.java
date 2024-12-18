@@ -32,7 +32,7 @@ public class PlayingMenu extends JPanel {
         setPreferredSize(new Dimension(1248, 700));
         setLayout(null);
 
-        backgroundImage = new ImageIcon(getClass().getResource("/background_glacial_mountains_lightened.png")).getImage();
+        backgroundImage = new ImageIcon(getClass().getResource("/background1.png")).getImage();
         
         
         play = new JButton("Play");

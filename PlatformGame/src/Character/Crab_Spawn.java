@@ -38,7 +38,7 @@ public class Crab_Spawn {
 	
 	
 	private void addCrabs() {
-		numberOfCrabs = Load.GetCrabs();
+		numberOfCrabs = Load.getCrab;
 		numCrabs = numberOfCrabs.size();
 	}
 	

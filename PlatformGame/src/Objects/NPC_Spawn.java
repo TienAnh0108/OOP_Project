@@ -25,7 +25,7 @@ public class NPC_Spawn {
 	
 	public NPC_Spawn() {
 		list = new ArrayList<>();
-		list = Load.GetNPC();
+		list = Load.getNPC;
 		loadNPC();
 	}
 	

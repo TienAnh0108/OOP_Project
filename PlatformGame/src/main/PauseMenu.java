@@ -19,7 +19,6 @@ import javax.swing.JSlider;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -140,6 +139,7 @@ public class PauseMenu extends JPanel {
 				nextSong();			
 			}});
 		add(nextSong);
+		System.out.println(pauseImage.getClass());
 		
 	}
 	

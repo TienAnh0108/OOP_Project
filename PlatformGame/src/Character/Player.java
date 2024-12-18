@@ -86,13 +86,10 @@ public class Player extends Entity {
 	private void updateState() {
 		createHitbox(x + 60, y + 40, width-120, height - 74);
 		setAttackRange();
-		 
-		
+
 		if(SwitchAction.action == 0) state_ani = 0;
 		else if (SwitchAction.action == 1)state_ani = 1;
-		   
-		
-		
+
 		if (jump) {
 			if(acJumpSound) getSound(0);  
 			acJumpSound = false;
@@ -117,7 +114,6 @@ public class Player extends Entity {
 			  state_ani = 5;
 		}
 
-		
 		
 		if (!inAir)
 			if (!CheckHitBox.IsEntityOnFloor(hitbox, levelData))

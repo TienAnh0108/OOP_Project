@@ -21,7 +21,7 @@ public class Trap_Spawn {
 	
 	public Trap_Spawn() {
 		list = new ArrayList<>();
-		list = Load.Gettraps();
+		list = Load.getTraps;
 		load();
 		
 		

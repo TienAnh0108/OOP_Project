@@ -29,7 +29,7 @@ public class Cannon_Spawn {
 		list = new ArrayList<>();
 		ballList = new ArrayList<>();
 		removeBalls = new ArrayList<>();
-		list = Load.Getcannon();
+		list = Load.getCannon;
 		loadCannon();
 	}
 	
