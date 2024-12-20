@@ -10,6 +10,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 
 import Character.Player;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,8 +19,11 @@ import javax.swing.JSlider;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.Timer;
 
 public class PauseMenu extends JPanel {
 
@@ -34,6 +38,8 @@ public class PauseMenu extends JPanel {
 	private JSlider sliderMusic;
 	private JSlider sliderSound;
 	private JButton nextSong;
+	private Image pauseImage,musicButImage,continueButImage,restartButImage,quit1ButImage;
+	
 	
 	public PauseMenu() {
 		
@@ -43,13 +49,27 @@ public class PauseMenu extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		setPreferredSize(new Dimension(500, 500));
+		 
+		setPreferredSize(new Dimension(500, 600));
+		setOpaque(false);
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
+		pauseImage = new ImageIcon(getClass().getResource("/pause Menu.png")).getImage();
+		musicButImage = new ImageIcon(getClass().getResource("/Music Square Button.png")).getImage();
+		continueButImage = new ImageIcon(getClass().getResource("/Continue Button.png")).getImage();
+		restartButImage = new ImageIcon(getClass().getResource("/New Game Button.png")).getImage();
+		quit1ButImage = new ImageIcon(getClass().getResource("/Quit Button.png")).getImage();
 		
-		continueButton = new JButton("Continue");
-		continueButton.setBounds(40, 375, 120, 56);
+		continueButton = new JButton(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                g.drawImage(continueButImage, 0, 0, getWidth(), getHeight(), this);
+                super.paintComponent(g);
+            }
+        };
+        continueButton.setContentAreaFilled(false);
+        continueButton.setBorderPainted(false);
+		continueButton.setBounds(80, 375, 120, 40);
 		continueButton.setFocusable(false);
 		continueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,8 +84,15 @@ public class PauseMenu extends JPanel {
 		
 		add(continueButton);
 		
-		restart = new JButton("Restart");
-		restart.setBounds(170, 375, 132, 56);
+		restart = new JButton() {
+			 protected void paintComponent(Graphics g) {
+	                g.drawImage(restartButImage, 0, 0, getWidth(), getHeight(), this);
+	                super.paintComponent(g);
+	            }
+		};
+		restart.setContentAreaFilled(false);
+        restart.setBorderPainted(false);
+		restart.setBounds(300, 375, 120, 40);
 		restart.setFocusable(false);
 		restart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,12 +108,20 @@ public class PauseMenu extends JPanel {
 		add(restart);
 		
 		gamePause = new JLabel("Game Paused");
-		gamePause.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		gamePause.setBounds(163, 11, 213, 43);
+		gamePause.setFont(new Font("Tahoma", Font.BOLD, 30));
+		gamePause.setForeground(java.awt.Color.BLACK);
+		gamePause.setBounds(163, 58, 213, 43);
 		add(gamePause);
 		
-		quit1 = new JButton("Quit");
-		quit1.setBounds(310, 375, 132, 56);
+		quit1 = new JButton() {
+			protected void paintComponent(Graphics g) {
+                g.drawImage(quit1ButImage, 0, 0, getWidth(), getHeight(), this);
+                super.paintComponent(g);
+            }
+		};
+		quit1.setContentAreaFilled(false);
+        quit1.setBorderPainted(false);
+		quit1.setBounds(190, 440, 120, 40);
 		quit1.setFocusable(false);
 		quit1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -97,18 +132,21 @@ public class PauseMenu extends JPanel {
 		
 		
 		music = new JLabel("Music");
-		music.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		music.setBounds(37, 116, 62, 23);
+		music.setFont(new Font("Tahoma", Font.BOLD, 18));
+		music.setForeground(java.awt.Color.BLACK);
+		music.setBounds(70, 130, 62, 23);
 		add(music);
 		
 		sound = new JLabel("Sound");
-		sound.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		sound.setBounds(37, 248, 62, 23);
+		sound.setFont(new Font("Tahoma", Font.BOLD, 18));
+		sound.setForeground(java.awt.Color.BLACK);
+		sound.setBounds(70, 248, 62, 23);
 		add(sound);
 		
 		sliderMusic = new JSlider(-60,6,-23);
-		sliderMusic.setBounds(135, 116, 200, 26);
+		sliderMusic.setBounds(145, 130, 200, 26);
 		sliderMusic.setFocusable(false);
+		sliderMusic.setForeground(java.awt.Color.BLACK);
 		sliderMusic.setValue(-23);
 		sliderMusic.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
@@ -117,8 +155,9 @@ public class PauseMenu extends JPanel {
 		add(sliderMusic);
 		
 		sliderSound = new JSlider(-60,6,-23);
-		sliderSound.setBounds(135, 248, 200, 26);
+		sliderSound.setBounds(145, 248, 200, 26);
 		sliderSound.setFocusable(false);
+		sliderSound.setForeground(java.awt.Color.BLACK);
 		sliderSound.setValue(-40);
 		sliderSound.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
@@ -126,17 +165,26 @@ public class PauseMenu extends JPanel {
 			}});
 		add(sliderSound);
 		
-		nextSong = new JButton("Next Song");
-		nextSong.setBounds(374, 119, 100, 33);
+		nextSong = new JButton() {
+			@Override
+            protected void paintComponent(Graphics g) {
+                g.drawImage(musicButImage, 0, 0, getWidth(), getHeight(), this);
+                super.paintComponent(g);
+            }
+		};
+		nextSong.setContentAreaFilled(false);
+        nextSong.setBorderPainted(false);
+		nextSong.setBounds(374, 119, 50, 50);
 		nextSong.setFocusable(false);
 		nextSong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nextSong();			
 			}});
 		add(nextSong);
+		System.out.println(pauseImage.getClass());
 		
 	}
-
+	
 	private void promptPage() {
         int result = JOptionPane.showConfirmDialog(
             null,
@@ -149,6 +197,12 @@ public class PauseMenu extends JPanel {
             System.exit(0);
         }
     }
+	
+	 protected void paintComponent(Graphics g) {
+	        super.paintComponent(g);
+	        g.drawImage(pauseImage, 0, 0, getWidth(), getHeight(), this);
+	        
+	    }
 
 	private void changeVolumeMusic() {
 		MainGame.ChangeVolume = sliderMusic.getValue();
