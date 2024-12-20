@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="src" path="sound"/>
-	<classpathentry kind="lib" path="D:/Java Lib/flatlaf-3.5.1.jar"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="lib" path="c:/Users/Chapter/Desktop/Java_Project/ReachingTheTreasure_OOP/flatlaf-3.5.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
