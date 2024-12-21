@@ -129,6 +129,7 @@ public class MainGame implements Runnable{
 
        if(restart) {
     	   Game_JPanel.selectionMenu = 0;
+    	   Crab_Spawn.clearCrab = false;
     	   panel_game.dieMenu();
     	   restart = false;
     	   die = false;

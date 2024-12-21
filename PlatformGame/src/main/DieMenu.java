@@ -46,7 +46,9 @@ public class DieMenu extends JPanel {
 		setLayout(null);
 		
 		restart = new JButton(){
-
+			/**
+			 * 
+			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -82,7 +84,9 @@ public class DieMenu extends JPanel {
 		add(label);
 		
 		quit = new JButton() {
-
+			/**
+			 * 
+			 */
 			private static final long serialVersionUID = 1L;
 
 			protected void paintComponent(Graphics g) {
