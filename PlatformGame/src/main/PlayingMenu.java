@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -21,7 +20,7 @@ public class PlayingMenu extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private JButton play;
-    private Image backgroundImage;
+    private Image backgroundImage,playButImage;
 
     public PlayingMenu() {
         try {
@@ -32,28 +31,38 @@ public class PlayingMenu extends JPanel {
         setPreferredSize(new Dimension(1248, 700));
         setLayout(null);
 
-        backgroundImage = new ImageIcon(getClass().getResource("/background1.png")).getImage();
+        backgroundImage = new ImageIcon(getClass().getResource("/background1.jpg")).getImage();
+        playButImage = new ImageIcon(getClass().getResource("/Play Button.png")).getImage();
         
-        
-        play = new JButton("Play");
-        
-        play.setFocusable(false);
-        play.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                playGame();
-                setVisible(false);
+        play = new JButton() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+            protected void paintComponent(Graphics g) {
+                g.drawImage(playButImage, 0, 0, getWidth(), getHeight(), this);
+                super.paintComponent(g);
             }
-        });
-        play.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        play.setBounds(550, 540, 120, 50);
-        add(play);
-    }
+        };
+        play.setContentAreaFilled(false);
+        play.setBorderPainted(false);
+		play.setFocusable(false);
+		play.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playGame();
+				setVisible(false);
+			}
+		});
+		play.setBounds(550, 540, 120, 50);
+		add(play);
+
+	}
+
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-        
+        g.drawImage(backgroundImage, 0, 0, 1248, 700, this);
     }
 
     private void playGame() {
